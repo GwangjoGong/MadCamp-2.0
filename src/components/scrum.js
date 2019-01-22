@@ -393,7 +393,7 @@ class Post extends Component {
 
                 </CardMedia>
                 <CardContent>
-                    <Dotdotdot clamp={4}>
+                    <Dotdotdot className='endline'clamp={4}>
                     {this.state.post.postText}
                     </Dotdotdot>
                     <Button 
