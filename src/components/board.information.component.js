@@ -61,7 +61,7 @@ export default class UserList extends Component{
         }
         axios.post('http://143.248.140.106:1580/post',type)
             .then(response => {
-                this.setState({posts: response.data});
+                this.setState({posts: response.data.reverse()});
             })
             .catch(function(err){
                 console.log(err);
@@ -131,7 +131,7 @@ export default class UserList extends Component{
         return(
             <div style={{marginLeft:this.state.margin_left,background:'lightgray',overflow:'hidden'}}>
                 <div className="row">
-                    <img alt="" src={QnA} style={{flex: 1,resize:'stretch',overflow:'hidden'}}/>
+                    <img alt="" src={QnA} style={{width:window.innerWidth}}/>
                 </div>
                 <div align="right" style={{padding:20}}>
                     <Button bsStyle="danger" onClick={()=>{

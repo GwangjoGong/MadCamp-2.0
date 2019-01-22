@@ -5,8 +5,8 @@ import "./homepage.css";
 const keyboard2 = require('../image/keyboard4.jpg');
 
 const divStyle ={
-    width: '100%',
-    height: '969px',
+    width: window.innerWidth,
+    height: window.innerHeight,
     backgroundImage: `url(${keyboard2})`,
     backgroundSize: 'cover',
     justifyContent: 'center',
@@ -28,7 +28,7 @@ export default class Homepage extends Component {
         return (
             <div align="center">
                 <div style={divStyle}>
-                    <div className="newfont" style={{ fontFamily:'Playfair Display',  fontSize:100,color:'white',height:969,padding:360}}>
+                    <div className="newfont" style={{ fontFamily:'Playfair Display',  fontSize:100,color:'white',height:window.innerHeight,padding:(window.innerHeight/3)}}>
                          <TextyAnim className="newfont" type="alpha">
                              MADCAMP 2.0
                          </TextyAnim>

@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Playfair+Display:400i|Spectral:500i');
+@import url('https://fonts.googleapis.com/css?family=Noto+Serif+KR|Open+Sans');
 
 .newfont{
     font-family: "Playfair Display";
+}
+
+.korfont{
+    font-family: 'Noto Serif KR';
 }

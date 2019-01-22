@@ -19,6 +19,7 @@ import Modal from 'react-awesome-modal';
 import {Button, FormGroup, ControlLabel,FormControl, Tab, Tabs, Radio} from 'react-bootstrap';
 import { fadeIn } from 'react-animations';
 import Radium, {StyleRoot} from 'radium';
+import TextyAnim from 'rc-texty';
 
 
 const styles = {
@@ -206,8 +207,10 @@ export default class Scrum extends Component {
         console.log("render")
         console.log(this.state.posts) 
         return (
-            <div style={{marginLeft:this.state.margin_left}}>
-                <div>didi</div>
+            <div style={{marginLeft:this.state.margin_left,padding:50}}>
+                <TextyAnim style={{fontWeight:'bold',fontSize:50}}>
+                    Scrum
+                </TextyAnim>
                 <div align="right" style={{fontFamily:"sans-serif",padding:20}}>
                     <Button
                         bsStyle="primary"
@@ -385,7 +388,7 @@ class Post extends Component {
                     subheader={this.state.post.updatedOn}
                 />
                 <CardMedia>
-                    <img style={{width:425, height:250,resize:'stretch'}} src={this.setImage(this.state.post.postType)}/>
+                    <img style={{width:400, height:250}} src={this.setImage(this.state.post.postType)}/>
                     {/* 여기도 바꿔야함!! */}
 
                 </CardMedia>

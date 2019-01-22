@@ -8,6 +8,7 @@ import { BootstrapTable, TableHeaderColumn, BootstrapButton } from 'react-bootst
 import Modal from 'react-awesome-modal';
 import TextyAnim from 'rc-texty';
 import Typography from '@material-ui/core/Typography';
+import { PlacesSmokingRooms } from 'material-ui/svg-icons';
 
 
 const title = "Notice"
@@ -24,7 +25,7 @@ const Not = props => (
 export default class Notice extends Component {
 
     // Post
-    // {	
+    // {   
     //     postType: String,  // notice, information, scrum
     //     postName : String,
     //     postText: String,
@@ -50,6 +51,8 @@ export default class Notice extends Component {
             postText: "",
             postedBy: "",
             updatedOn: "",
+            page: 0,
+            sizePerPage: 0,
             
             visible: false,
             visible2: false,
@@ -131,11 +134,13 @@ export default class Notice extends Component {
     }
     
     cellButton(cell, row, enumObject, rowIndex) {
+
+        var idx = (this.state.page - 1) * this.state.sizePerPage + rowIndex
         return (
         <Button 
             bsSize="sm" bsStyle="warning"
             onClick={ () =>
-            this.onClickProductSelected(cell, row, rowIndex)}> details </Button>
+            this.onClickProductSelected(cell, row, idx)}> details </Button>
         )
     }
 
@@ -144,12 +149,29 @@ export default class Notice extends Component {
     }
 
     closeDetail() {
-        this.setState({visible2: false});
+        this.setState({
+            visible2: false,
+            postName : '',
+            postText : ''
+        });
+    }
+
+    onPageChange(page, sizePerPage) {
+        this.state.page = page;
+        this.state.sizePerPage = sizePerPage;
+    }
+
+    sessionCheck() {
+        var id = window.sessionStorage.getItem('id');
+        if(id) return true;
+        else return false;
     }
 
     render() {
         const tableOptions = {
-            sizePerPage: 5
+            sizePerPage: 10,
+            onPageChange: this.onPageChange.bind(this),
+            
         }
         return (
             <div style={{marginLeft:this.state.margin_left+20,marginTop: 20}}>
@@ -169,7 +191,11 @@ export default class Notice extends Component {
                     <Button
                         bsSize="medium" 
                         bsStyle="danger"
-                        onClick={()=>{this.setState({visible:true})}}>new notice</Button>
+                        onClick={()=>{
+                            if(this.sessionCheck()){
+                                this.setState({visible:true})
+                            }
+                            }}>new notice</Button>
                 </div>    
                 <Layout height="auto">
                     <div style={{marginTop: 20, paddingRight: 350}}>
