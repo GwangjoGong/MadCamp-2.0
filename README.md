@@ -6,6 +6,16 @@ MadCamp 2.0 is React based web application for madcamp in KAIST.
 
 ---
 
+### Developers
+
+Gwangjo Gong
+
+Jeongsub Lee
+
+Jihoo Kim
+
+---
+
 ### Specification
 
 - Used MERN stack.
